@@ -4,22 +4,24 @@ import 'dart:convert';
 
 class DataService extends ChangeNotifier {
   String topRatedUrl =
-      'https://api.themoviedb.org/3/movie/top_rated?api_key=8561ac90901236d3888023b8e21667fc&language=en-US&page=1';
+      'https://api.themoviedb.org/3/movie/popular?api_key=8561ac90901236d3888023b8e21667fc&language=en-US&page=1';
   String genreUrl =
       'https://api.themoviedb.org/3/genre/movie/list?api_key=8561ac90901236d3888023b8e21667fc&language=en-US';
 
   var movies = [];
   var genres = [];
   var genresData = [];
-  var topRatedMovies=[];
-  
+  var topRatedMovies = [];
+  DataService() {
+    getTopRatedMovies();
+  }
+
   getTopRatedMovies() async {
     http.Response data = await http.get('$topRatedUrl');
     var rated = json.decode(data.body);
-    topRatedMovies=rated['results'];
+    topRatedMovies = rated['results'];
     // print(topRatedMovies);
     notifyListeners();
-
   }
 
   getGenreData() async {
@@ -39,7 +41,8 @@ class DataService extends ChangeNotifier {
       // genres = data['results']['genre_ids'];
       notifyListeners();
     } else {
-      
+      movies=[];
+      getTopRatedMovies();
       print(res.statusCode);
     }
   }

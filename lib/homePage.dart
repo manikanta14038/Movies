@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -71,28 +70,34 @@ class _HomePageState extends State<HomePage> {
                             ? dataService.topRatedMovies[index]['genre_ids']
                             : dataService.movies[index]['genre_ids'];
                         for (var i = 0; i < genreID.length; i++)
-                          for (var j = 0; j < dataService.genresData.length; j++) {
+                          for (var j = 0;
+                              j < dataService.genresData.length;
+                              j++) {
                             if (genreID[i] == dataService.genresData[j]['id']) {
-                              dataService.genres.add(dataService.genresData[j]['name']);
+                              dataService.genres
+                                  .add(dataService.genresData[j]['name']);
                             }
                           }
-                        return dataService.movies.length != 0 
+                        return dataService.movies.length != 0
                             ? MovieCard(
                                 imageUrl: imageUrl,
                                 moviePicture: dataService.movies[index]
                                     ['poster_path'],
                                 movieTitle: dataService.movies[index]['title'],
                                 genre: dataService.genres,
-                                rating: dataService.movies[index]['vote_average']
+                                rating: dataService.movies[index]
+                                        ['vote_average']
                                     .toDouble(),
                               )
                             : MovieCard(
                                 imageUrl: imageUrl,
                                 moviePicture: dataService.topRatedMovies[index]
                                     ['poster_path'],
-                                movieTitle: dataService.topRatedMovies[index]['title'],
+                                movieTitle: dataService.topRatedMovies[index]
+                                    ['title'],
                                 genre: dataService.genres,
-                                rating: dataService.topRatedMovies[index]['vote_average']
+                                rating: dataService.topRatedMovies[index]
+                                        ['vote_average']
                                     .toDouble(),
                               );
                       },
