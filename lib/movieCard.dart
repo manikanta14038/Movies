@@ -111,21 +111,9 @@ class MovieCard extends StatelessWidget {
                           );
                         }),
                       ),
-                      // List.generate(rating.toInt(), (index) =>{
-                      //   return Icon(
-                      //     index < 2.5 ? Icons.star : Icons.star_border,
-                      //   )
-                      // })
                     ],
                   ),
-                  // Row(
-                  //   mainAxisSize: MainAxisSize.min,
-                  //   children: List.generate(5, (index) {
-                  //     return Icon(
-                  //       index < 2.5 ? Icons.star : Icons.star_border,
-                  //     );
-                  //   }),
-                  // ),
+                 
                 ],
               ),
             ),
